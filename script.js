@@ -4,13 +4,13 @@ console.log("cont width: " + containerWidth);
 let gridSize = 16;
 //create grid of pink squares, size default 16x16
 function makeGrid() {
-    let boxWidth = (containerWidth / gridSize) + 'px';
-    console.log("box width: " + boxWidth);
+    let boxSize = (containerWidth / gridSize) + 'px';
+    console.log("box width: " + boxSize);
     for (let i = 0; i < gridSize * gridSize; i++) {
         let div = document.createElement('div');
         div.classList.add('gridDiv');
-        div.style.width = boxWidth;
-        div.style.height = boxWidth;
+        div.style.width = boxSize;
+        div.style.height = boxSize;
         //turn squares red on hover
         div.addEventListener(('mouseover'), () => {
             div.style.backgroundColor = 'red';
