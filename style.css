@@ -1,0 +1,15 @@
+#resize-button {
+    color: blue;
+    background-color: cyan;
+}
+#grid-container {
+    line-height: 0px;
+}
+.gridDiv {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: pink;
+    border: solid;
+    border-width: 1px;
+}
