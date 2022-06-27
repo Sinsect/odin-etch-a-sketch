@@ -1,23 +1,21 @@
 const gridContainer = document.querySelector('#grid-container');
-let rowCount = 16;
-let colCount = 16;
-let containerWidth = 500;
-gridContainer.style.width = containerWidth + 'px';
-gridContainer.style.height = gridContainer.style.width;
+let containerWidth = gridContainer.offsetWidth;
+console.log("cont width: " + containerWidth);
+let gridSize = 16;
 //create grid of pink squares, size default 16x16
 function makeGrid() {
-    for (let i = 0; i < rowCount; i++) {
-        for (let j = 0; j < colCount; j++) {
-            let div = document.createElement('div');
-            div.classList.add('gridDiv');
-            //turn squares red on hover
-            div.addEventListener(('mouseover'), () => {
-                div.style.backgroundColor = 'red';
-            });
-            gridContainer.appendChild(div);
-        }
-        let breakLine = document.createElement('br');
-        gridContainer.appendChild(breakLine);
+    let boxWidth = (containerWidth / gridSize) + 'px';
+    console.log("box width: " + boxWidth);
+    for (let i = 0; i < gridSize * gridSize; i++) {
+        let div = document.createElement('div');
+        div.classList.add('gridDiv');
+        div.style.width = boxWidth;
+        div.style.height = boxWidth;
+        //turn squares red on hover
+        div.addEventListener(('mouseover'), () => {
+            div.style.backgroundColor = 'red';
+        });
+        gridContainer.appendChild(div);
     }
 }
 function deleteGrid() {
@@ -28,11 +26,10 @@ function deleteGrid() {
 makeGrid();
 const resizeButton = document.querySelector('#resize-button');
 resizeButton.addEventListener(('click'), () => {
-    let currentSize = colCount;
+    let currentSize = gridSize;
     let newSize = prompt('dimensions? (max 100)', currentSize);
     if (!isNaN(newSize) && newSize >= 0 && newSize <= 100) {
-        colCount = newSize;
-        rowCount = newSize;
+        gridSize = newSize;
         deleteGrid();
         makeGrid();
     }
