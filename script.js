@@ -4,18 +4,25 @@ console.log("cont width: " + containerWidth);
 let gridSize = 16;
 //create grid of pink squares, size default 16x16
 function makeGrid() {
+    //calculate size of each box as a fraction of the width of the container
     let boxSize = (containerWidth / gridSize) + 'px';
     console.log("box width: " + boxSize);
-    for (let i = 0; i < gridSize * gridSize; i++) {
-        let div = document.createElement('div');
-        div.classList.add('gridDiv');
-        div.style.width = boxSize;
-        div.style.height = boxSize;
-        //turn squares red on hover
-        div.addEventListener(('mouseover'), () => {
-            div.style.backgroundColor = 'red';
-        });
-        gridContainer.appendChild(div);
+    for (let i = 0; i < gridSize; i++) {
+        let divRow = document.createElement('div');
+        divRow.classList.add('gridRow');
+        for (let j = 0; j < gridSize; j++) {
+            let div = document.createElement('div');
+            div.classList.add('gridDiv');
+            div.style.width = boxSize;
+            div.style.height = boxSize;
+            //turn squares red on hover
+            div.addEventListener(('mouseover'), () => {
+                div.style.backgroundColor = 'red';
+            });
+            divRow.appendChild(div);
+        }
+        gridContainer.appendChild(divRow);
+
     }
 }
 function deleteGrid() {
