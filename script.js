@@ -35,12 +35,12 @@ const resizeButton = document.querySelector('#resize-button');
 resizeButton.addEventListener(('click'), () => {
     let currentSize = gridSize;
     let newSize = prompt('dimensions? (max 100)', currentSize);
-    if (!isNaN(newSize) && newSize >= 0 && newSize <= 100) {
+    if (!isNaN(newSize) && newSize > 0 && newSize <= 100) {
         gridSize = newSize;
         deleteGrid();
         makeGrid();
     }
     else {
-        prompt('Invalid input!');
+        alert('Invalid input!');
     }
 });
